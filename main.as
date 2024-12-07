@@ -18,11 +18,9 @@ string backend = "https://api.wheelgpt.dev/";
 
 string localBackend = "http://localhost:1330/";
 
-string apiEndpoint = "api/v1/";
-
 string getBackend() {
-    if (testLocal) return localBackend + apiEndpoint;
-    return backend + apiEndpoint;
+    if (testLocal) return localBackend;
+    return backend;
 }
 
 Net::HttpRequest@ PostRequestAsync(const string &in url, const Json::Value &in data){
@@ -136,7 +134,7 @@ void SendUpdateMap() {
         return;
     }
 
-    string endpoint = getBackend() + "updateMap";
+    string endpoint = getBackend() + "game/update/map";
     Json::Value body = Json::Object();
     if (currentMap is null) {
         body["mapAvailable"] = false;
@@ -184,7 +182,7 @@ void SendUpdatePersonalBest(int time) {
         return;
     }
 
-    string endpoint = getBackend() + "updatePB";
+    string endpoint = getBackend() + "game/update/pb";
     Json::Value body = Json::Object();
     body["time"] = time;
 
