@@ -14,7 +14,7 @@ bool debug = false;
 bool testLocal = false;
 
 [Setting category="Dev" name="Backend"]
-string backend = "https://wheelgpt.sowiemarkus.com/";
+string backend = "https://api.wheelgpt.dev/";
 
 string localBackend = "http://localhost:1330/";
 
