@@ -1,4 +1,4 @@
-[Setting category="Info" name="Token" password description="Get your token on https://wheelgpt.sowiemarkus.com/"]
+[Setting category="Info" name="Token" password description="Get your token on https://wheelgpt.dev/"]
 string token = "";
 
 [Setting category="Info" name="Send PBs to Server"]
@@ -108,10 +108,12 @@ void Main() {
         personalBestTime = scoreManager.Map_GetRecord_v2(userId, rootMap.MapInfo.MapUid, "PersonalBest", "", "TimeAttack", "");
 
         if (newMap) {
+            debugPrint("Set new pb time from storage");
             previousBestTime = personalBestTime;
         }
 
         if (personalBestTime != -1 && previousBestTime != personalBestTime) {
+            debugPrint("new best time");
             previousBestTime = personalBestTime;
             SendUpdatePersonalBest(personalBestTime);
         }
@@ -179,6 +181,7 @@ void SendUpdatePersonalBest(int time) {
     }
     
     if (retriesPB == 0) {
+        debugPrint("No Retries left.");
         return;
     }
 
