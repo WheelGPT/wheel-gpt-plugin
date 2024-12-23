@@ -34,11 +34,7 @@ Net::HttpRequest@ PostRequestAsync(const string &in url, const Json::Value &in d
     
     int count = 0;
     while(!request.Finished()) {
-        count++;
-        sleep(1000);
-        if (count == 10) {
-            break;
-        }
+        yield();
     }
     return request;
 }
